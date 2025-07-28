@@ -1,0 +1,67 @@
+<div class="container mt-5">
+    <div class="text-right mb-3">
+        <button class="btn btn-danger" (click)="logOut()">Cerrar sesión</button>
+    </div>
+
+    <h2 class="text-center mb-4">Lista de Productos</h2>
+
+    <table class="table table-striped table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">PLU</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Descripción</th>
+                <th scope="col">Unidades Disponibles</th>
+                <th scope="col">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let product of productList">
+                <td>{{product.plu}}</td>
+                <td>{{product.name}}</td>
+                <td>{{product.description}}</td>
+                <td>{{product.unitsAvailable}}</td>
+                <td>
+                    <button class="btn btn-success btn-sm" (click)="openSellModal(product)">Vender</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="modal fade" id="sellModal" tabindex="-1" role="dialog" aria-labelledby="sellModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="sellModalLabel">Vender Producto</h5>
+                    <button type="button" class="close" aria-label="Close" onclick="closeModal()">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="plu">PLU</label>
+                            <input type="text" class="form-control" id="plu" [(ngModel)]="selectedPLU" name="plu" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="unitsToSell">Unidades a Vender</label>
+                            <input type="number" class="form-control" id="unitsToSell" [(ngModel)]="unitsToSell" name="unitsToSell" min="1" [max]="selectedProduct?.unitsAvailable" required>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" onclick="closeModal()">Cerrar</button>
+                    <button type="button" class="btn btn-success" (click)="sellProduct()">Vender</button>
+                </div>
+                <div class="modal-body">
+                    <div class="alert alert-danger " *ngIf="showError">
+                        Error. No se pudo completar la venta
+                    </div>
+                    <div class="alert alert-success" *ngIf="showOk">
+                        La venta se ha completado con éxito
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

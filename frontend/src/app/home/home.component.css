@@ -1,0 +1,40 @@
+.container {
+    background-color: #f8f9fa; /* Fondo claro */
+    border-radius: 10px; /* Bordes redondeados */
+    padding: 20px; /* Espaciado interno */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+}
+
+h2 {
+    color: #007bff; /* Color del título */
+}
+
+.table {
+    margin-top: 20px; /* Espaciado superior */
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #f2f2f2; /* Color de fondo alternativo para filas */
+}
+
+.table-bordered th, .table-bordered td {
+    border: 1px solid #dee2e6; /* Bordes de la tabla */
+}
+
+.btn-danger {
+    background-color: #dc3545; /* Color del botón de cerrar sesión */
+    border: none; /* Sin borde */
+}
+
+.btn-danger:hover {
+    background-color: #c82333; /* Color del botón al pasar el mouse */
+}
+
+.btn-success {
+    background-color: #28a745; /* Color del botón de vender */
+    border: none; /* Sin borde */
+}
+
+.btn-success:hover {
+    background-color: #218838; /* Color del botón al pasar el mouse */
+}
